@@ -8,6 +8,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class CustomerService {
     
@@ -24,7 +26,7 @@ public class CustomerService {
         return repository.findAll();
     }
 
-    public Optional<CustomerModel> getCustomerById(Long id)
+    public Optional<CustomerModel> getCustomerById(UUID id)
     {
         return repository.findById(id);
     }
@@ -34,7 +36,7 @@ public class CustomerService {
         return repository.save(customer);
     }
 
-    public Optional<CustomerModel> updateCustomer(Long id, CustomerModel customer)
+    public Optional<CustomerModel> updateCustomer(UUID id, CustomerModel customer)
     {
         if (repository.existsById(id)) {
             customer.setId(id);
@@ -44,7 +46,7 @@ public class CustomerService {
         }
     }
 
-    public void deleteById (Long id)
+    public void deleteById (UUID id)
     {
         if (repository.existsById(id))
         {
