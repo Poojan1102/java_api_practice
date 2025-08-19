@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.restapi.model.CustomerModel;
 import com.example.restapi.service.CustomerService;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/customer")
 
@@ -31,7 +33,7 @@ public class CustomerController{
     }
 
     @GetMapping("/{id}")
-    public Optional<CustomerModel> getCustomerById(@PathVariable Long id){
+    public Optional<CustomerModel> getCustomerById(@PathVariable UUID id){
         return service.getCustomerById(id);
     }
 
@@ -42,7 +44,7 @@ public class CustomerController{
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CustomerModel> updateCustomer(@PathVariable Long id, @RequestBody CustomerModel customer)
+    public ResponseEntity<CustomerModel> updateCustomer(@PathVariable UUID id, @RequestBody CustomerModel customer)
     {
         return service.updateCustomer(id,customer)
         .map(updatedCustomer -> ResponseEntity.ok(updatedCustomer))
@@ -50,7 +52,7 @@ public class CustomerController{
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id)
+    public ResponseEntity<Void> deleteCustomer(@PathVariable UUID id)
     {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
