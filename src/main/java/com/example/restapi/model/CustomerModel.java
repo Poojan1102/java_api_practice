@@ -1,12 +1,12 @@
 package com.example.restapi.model;
 
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import java.util.UUID;
 
 
 // To say this is DB table
@@ -14,9 +14,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="CUSTOMER")
 public class CustomerModel {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     
     private String firstName;
     private String lastName;
@@ -36,12 +37,12 @@ public class CustomerModel {
     }
     
 
-    public Long getId()
+    public UUID getId()
     {
         return id;
     }
 
-    public void setId(Long id)
+    public void setId(UUID id)
     {
         this.id = id;
     }
