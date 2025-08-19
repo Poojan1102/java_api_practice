@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.example.restapi.model.CustomerModel;
 
+import java.util.UUID;
+
 @Repository
-public interface CustomerRepository extends JpaRepository<CustomerModel, Long>{
+public interface CustomerRepository extends JpaRepository<CustomerModel, UUID>{
     
 }
